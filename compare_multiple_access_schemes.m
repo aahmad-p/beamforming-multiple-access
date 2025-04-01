@@ -2,8 +2,7 @@ function compare_multiple_access_schemes(M_x, M_y, user1_theta_deg, user2_theta_
 % Description: 
 % Input(s):
 %           -
-% Output(s):
-%           - 
+% Output(s): None
 %
 
 arguments
@@ -22,7 +21,7 @@ rho = 10^(Pe_dBm/10)/10^(sigmasq_dBm/10);
 %  channel coefficients
 alpha_vec = [8.3e-6, 7.4e-6];
 
-%  power splitting (MB-NOMA)
+%  power splitting: proportion (for MB-NOMA)
 gamma_vec = [0.2, 0.8];
 
 
@@ -41,6 +40,7 @@ sum_rate_SDMA = nan(size(user2_theta_deg_vec));
 sum_rate_SB_NOMA = nan(size(user2_theta_deg_vec));
 sum_rate_MB_NOMA = nan(size(user2_theta_deg_vec));
 
+% Compute sum rate for each delta theta point
 for k = 1:length(user2_theta_deg_vec)
     user2_theta_deg = user2_theta_deg_vec(k);
     
@@ -83,7 +83,7 @@ xlabel('${\Delta\theta}$ [deg]','Interpreter','Latex');
 ylabel('Sum Rate');
 legend('MB-NOMA', 'SB-NOMA', 'SDMA');
 title('Sum Rate vs Angular Difference between UEs');
-saveas(2, 'sumrate_deltatheta.png', 'png');
+%saveas(2, 'sumrate_deltatheta.png', 'png');
 
 figure(3);
 clf;
@@ -96,6 +96,6 @@ xlabel('${\beta}$','Interpreter','Latex');
 ylabel('Sum Rate');
 legend('MB-NOMA', 'SB-NOMA', 'SDMA');
 title('Sum Rate vs Spatial Interference between UEs');
-saveas(3, 'sumrate_beta.png', 'png');
+%saveas(3, 'sumrate_beta.png', 'png');
 
 return
